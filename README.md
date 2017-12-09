@@ -10,7 +10,7 @@ MakeItGif is a very small bash script for invoking ffmpeg with the best settings
 
 **Depends on: Linux , ffmpeg**
 
-# Other Options
+### Other Options
 **This script is very simple but if you want a complete solution for creating gif then try this project!**
 
 * [ScreenGif](https://github.com/dergachev/screengif)
