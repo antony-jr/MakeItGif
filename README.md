@@ -15,7 +15,7 @@ MakeItGif is a very small bash script for invoking ffmpeg with the best settings
 **You just need to copy it!**   
 
 ```
- $ sudo wget -O "/usr/bin/MakeItGif" "https://git.io/vb4Sh"
+ $ sudo wget -O "/usr/bin/MakeItGif" "https://git.io/vb4dP"
  $ sudo chmod +x /usr/bin/MakeItGif
  $ MakeItGif # Installed
 ```
