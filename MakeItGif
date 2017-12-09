@@ -1,0 +1,34 @@
+#!/bin/bash
+if [ $# -lt 3 ]
+	then
+		echo "MakeItGif v1.0.0 , Makes gif out of videos using ffmpeg."
+		echo "Copyright (c) 2017 antony jr."
+		echo " "
+		echo "Usage: MakeItGif [VIDEO FILE] [SCALE] [OUTPUT]"
+		exit -1
+fi
+
+echo "INPUT VIDEO :: "$1
+echo "SCALED 	  :: "$2
+echo "OUTPUT GIF  :: "$3
+
+ffmpeg -y -i $1 -vf fps=10,scale=$2:-1:flags=lanczos,palettegen ~/palette.png
+if [ $? -ne 0 ]
+	then
+		echo "ffmpeg returned error... "
+		echo "exiting!"
+		exit -1
+fi
+
+ffmpeg -y -i $1 -i ~/palette.png -filter_complex "fps=10,scale=$2:-1:flags=lanczos[x];[x][1:v]paletteuse" $3
+
+echo "Removing junk.... "
+rm ~/palette.png
+
+echo "INPUT VIDEO :: "$1
+echo "SCALED      :: "$2
+echo "OUTPUT GIF  :: "$3
+
+echo "Gif successfully created at $3"
+
+
