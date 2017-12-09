@@ -1,7 +1,6 @@
 # MakeItGif [![GitHub issues](https://img.shields.io/github/issues/antony-jr/MakeItGif.svg?style=for-the-badge)](https://github.com/antony-jr/MakeItGif/issues) [![GitHub forks](https://img.shields.io/github/forks/antony-jr/MakeItGif.svg?style=for-the-badge)](https://github.com/antony-jr/MakeItGif/network) [![GitHub stars](https://img.shields.io/github/stars/antony-jr/MakeItGif.svg?style=for-the-badge)](https://github.com/antony-jr/MakeItGif/stargazers) [![GitHub license](https://img.shields.io/github/license/antony-jr/MakeItGif.svg?style=social)](https://github.com/antony-jr/MakeItGif/blob/master/LICENSE)
 
-> MakeItGif is very simple bash script specifically writen for Linux , to convert videos to gif for   
-> eyecandy!   
+> MakeItGif is a very simple bash script specifically writen for Linux , to convert videos to gif for eyecandy!   
 
 MakeItGif is a very small bash script for invoking ffmpeg with the best settings to convert videos to gif , **Do you ever wanted to just create gif with videos ?**. Then just Try **MakeItGif**   
 
