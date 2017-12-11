@@ -1,26 +1,36 @@
 #!/bin/bash
 if [ $# -lt 3 ]
-	then
-		echo "MakeItGif v1.0.0 , Makes gif out of videos using ffmpeg."
-		echo "Copyright (c) 2017 antony jr."
-		echo " "
-		echo "Usage: MakeItGif [VIDEO FILE] [SCALE] [OUTPUT]"
-		exit -1
+    then
+        echo "MakeItGif v1.0.0 , Makes gif out of videos using ffmpeg."
+        echo "Copyright (c) 2017 antony jr."
+        echo " "
+        echo "Usage: MakeItGif [VIDEO FILE] [SCALE] [OUTPUT]"
+        exit -1
 fi
 
+#Check If ffmpeg Is Installed
+if ! [ -x "$(command -v ffmpeg)" ]; then
+printf "ffmpeg not installed , Installing ffmpeg\n"
+
+apt-get update > /dev/null 2>&1
+apt-get install ffmpeg -y > /dev/null 2>&1
+
+else
+
+printf "ffmpeg processing...\n"
 echo "INPUT VIDEO :: "$1
-echo "SCALED 	  :: "$2
+echo "SCALED       :: "$2
 echo "OUTPUT GIF  :: "$3
 
-ffmpeg -y -i $1 -vf fps=10,scale=$2:-1:flags=lanczos,palettegen ~/palette.png
+ffmpeg -y -t 3 -i $1 -vf fps=10,scale=$2:-1:flags=lanczos,palettegen ~/palette.png
 if [ $? -ne 0 ]
-	then
-		echo "ffmpeg returned error... "
-		echo "exiting!"
-		exit -1
+    then
+        echo "ffmpeg returned error... "
+        echo "exiting!"
+        exit -1
 fi
 
-ffmpeg -y -i $1 -i ~/palette.png -filter_complex "fps=10,scale=$2:-1:flags=lanczos[x];[x][1:v]paletteuse" $3
+ffmpeg -y -t 3 -i $1 -i ~/palette.png -filter_complex "fps=10,scale=$2:-1:flags=lanczos[x];[x][1:v]paletteuse" $3
 
 echo "Removing junk.... "
 rm ~/palette.png
@@ -30,5 +40,5 @@ echo "SCALED      :: "$2
 echo "OUTPUT GIF  :: "$3
 
 echo "Gif successfully created at $3"
-
+fi
 
